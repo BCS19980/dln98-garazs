@@ -121,12 +121,12 @@
       </div>
     </section>
 
-    <!-- 1. KÜLÖNÁLLÓ REFERENCIA MAPPA SZOBA -->
+    <!-- REFERENCIA MAPPA SZOBA (EGYSÉGESÍTVE) -->
     <section id="referenciak" class="space-y-6">
       <div class="flex justify-between items-end">
         <div>
-          <h2 class="font-luxury text-3xl font-bold gold-gradient-text">REFERENCIA MAPPÁK SZOBA</h2>
-          <p class="text-gray-400 text-sm mt-1">Kattints a mappákra a képek megtekintéséhez!</p>
+          <h2 class="font-luxury text-3xl font-bold gold-gradient-text">REFERENCIA MAPPA</h2>
+          <p class="text-gray-400 text-sm mt-1">Kattints a mappára a munkák megtekintéséhez!</p>
         </div>
         <div id="adminUploadArea" class="hidden">
           <label class="bg-amber-500 text-black px-4 py-2 rounded-lg font-bold text-sm cursor-pointer hover:bg-amber-400 transition inline-flex items-center gap-2 shadow-lg">
@@ -136,14 +136,12 @@
         </div>
       </div>
 
-      <!-- Különálló Mappa Dobozok Grid -->
-      <div class="grid md:grid-cols-2 gap-8">
-
-        <!-- MAPPA 1: JÁRMŰ FÉNYEZÉSEK -->
-        <div onclick="openFolder('jarmuvek')" class="glass-card p-6 rounded-2xl cursor-pointer hover:scale-[1.02] transition duration-300 shadow-xl group border border-amber-500/30">
+      <!-- Egyetlen központi Mappa Doboz -->
+      <div class="max-w-xl mx-auto">
+        <div onclick="openFolder('garazs')" class="glass-card p-6 rounded-2xl cursor-pointer hover:scale-[1.02] transition duration-300 shadow-xl group border border-amber-500/30">
           <div class="flex items-center justify-between mb-4">
             <h3 class="font-luxury text-xl font-bold text-amber-400 group-hover:text-amber-300 flex items-center gap-2">
-              <i class="fa-solid fa-folder-open text-amber-500"></i> Jármű Fényezések Mappa
+              <i class="fa-solid fa-folder-open text-amber-500"></i> Garázsok & Ingatlanok Mappa
             </h3>
             <span class="text-xs bg-amber-500/20 text-amber-300 px-3 py-1 rounded-full border border-amber-500/30">Megnyitás ➔</span>
           </div>
@@ -155,28 +153,10 @@
             <img src="ház4.jpg" alt="Minta 4" class="w-full h-24 object-cover rounded">
           </div>
         </div>
-
-        <!-- MAPPA 2: GARÁZS & INGATLAN MUNKÁK -->
-        <div onclick="openFolder('garazs')" class="glass-card p-6 rounded-2xl cursor-pointer hover:scale-[1.02] transition duration-300 shadow-xl group border border-amber-500/30">
-          <div class="flex items-center justify-between mb-4">
-            <h3 class="font-luxury text-xl font-bold text-amber-400 group-hover:text-amber-300 flex items-center gap-2">
-              <i class="fa-solid fa-folder-open text-amber-500"></i> Garázsok & Ingatlanok Mappa
-            </h3>
-            <span class="text-xs bg-amber-500/20 text-amber-300 px-3 py-1 rounded-full border border-amber-500/30">Megnyitás ➔</span>
-          </div>
-          <!-- 4 Kis kép háttérként/borítóként -->
-          <div class="grid grid-cols-2 gap-2 rounded-xl overflow-hidden bg-black/40 p-2">
-            <img src="ház5.jpg" alt="Minta 5" class="w-full h-24 object-cover rounded">
-            <img src="ház6.jpg" alt="Minta 6" class="w-full h-24 object-cover rounded">
-            <img src="ház7.jpg" alt="Minta 7" class="w-full h-24 object-cover rounded">
-            <img src="ház8.jpg" alt="Minta 8" class="w-full h-24 object-cover rounded">
-          </div>
-        </div>
-
       </div>
     </section>
 
-    <!-- 2. KÜLÖNÁLLÓ NYEREMÉNYJÁTÉK SZOBA -->
+    <!-- NYEREMÉNYJÁTÉK SZOBA -->
     <section id="nyeremenyjatek">
       <div class="glass-card p-8 md:p-10 rounded-2xl border-2 border-amber-500/40 shadow-2xl relative overflow-hidden space-y-6">
         <div class="absolute -right-10 -top-10 w-48 h-48 bg-amber-500/10 rounded-full blur-3xl"></div>
@@ -213,7 +193,7 @@
       </div>
     </section>
 
-    <!-- ELÉRHERŐSÉG SZEKCIÓ -->
+    <!-- ELÉRHETŐSÉG SZEKCIÓ -->
     <section id="elerhetoseg" class="space-y-6">
       <div class="text-center">
         <h2 class="font-luxury text-3xl font-bold gold-gradient-text">ELÉRHETŐSÉG</h2>
@@ -298,12 +278,10 @@
   </div>
 
   <script>
-    // Dinamikus galéria adatok
+    // Összevont galéria adatok (A korábbi járműves képek is itt vannak)
     const galleryData = {
-      jarmuvek: [
-        "ház1.jpg", "ház2.jpg", "ház3.jpg", "ház4.jpg"
-      ],
       garazs: [
+        "ház1.jpg", "ház2.jpg", "ház3.jpg", "ház4.jpg",
         "ház5.jpg", "ház6.jpg", "ház7.jpg", "ház8.jpg", "ház9.jpg", "ház10.jpg", "gáz11.jpg"
       ]
     };
@@ -313,7 +291,7 @@
       const title = document.getElementById('modalTitle');
       const container = document.getElementById('modalImages');
 
-      title.innerText = folderKey === 'jarmuvek' ? '📁 Jármű Fényezések Mappa' : '📁 Garázsok & Ingatlanok Mappa';
+      title.innerText = '📁 Garázsok & Ingatlanok Teljes Galéria';
 
       container.innerHTML = '';
       galleryData[folderKey].forEach(imgUrl => {
