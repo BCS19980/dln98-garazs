@@ -84,4 +84,309 @@
           </h3>
           <div class="flex justify-between items-center py-3 border-b border-gray-800/80">
             <span class="font-medium text-lg">🔹 Kis Garázs Kiépítés</span>
-            <span id="price-small-garage" class="font-bold text-amber-400 text-lg">10.000.00
+            <span id="price-small-garage" class="font-bold text-amber-400 text-lg">10.000.000 $</span>
+          </div>
+          <div class="flex justify-between items-center py-3 border-b border-gray-800/80">
+            <span class="font-medium text-lg">🔹 Közepes Garázs Kiépítés</span>
+            <span id="price-medium-garage" class="font-bold text-amber-400 text-lg">20.000.000 $</span>
+          </div>
+          <div class="flex justify-between items-center py-3">
+            <span class="font-medium text-lg">🔹 Nagy Garázs Kiépítés</span>
+            <span id="price-large-garage" class="font-bold text-amber-400 text-lg">30.000.000 $</span>
+          </div>
+        </div>
+
+        <!-- INGATLAN CSOMAGOK -->
+        <div class="glass-card p-8 rounded-2xl border-l-4 border-amber-500 space-y-4">
+          <h3 class="font-luxury text-xl font-bold text-amber-400 mb-4 flex items-center gap-2">
+            <i class="fa-solid fa-house"></i> INGATLAN KIÉPÍTÉSI CSOMAGOK
+          </h3>
+          <div class="flex justify-between items-center py-3">
+            <span class="font-medium text-lg">🏡 Alap Ingatlan Kiépítés</span>
+            <span id="price-property" class="font-bold text-amber-400 text-lg">20.000.000 $</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ADMIN ÁR SZERKESZTŐ PANEL -->
+      <div id="adminEditPrices" class="hidden glass-card p-6 rounded-2xl border border-amber-500/40 space-y-4 max-w-2xl mx-auto">
+        <p class="text-xs font-bold text-amber-400 uppercase">⚡ Admin: Árak Módosítása ($)</p>
+        <div class="grid sm:grid-cols-2 gap-3">
+          <input type="text" id="inputSmall" placeholder="Kis Garázs új ára..." class="bg-gray-900/90 border border-gray-700 p-2 rounded text-sm text-white">
+          <input type="text" id="inputMedium" placeholder="Közepes Garázs új ára..." class="bg-gray-900/90 border border-gray-700 p-2 rounded text-sm text-white">
+          <input type="text" id="inputLarge" placeholder="Nagy Garázs új ára..." class="bg-gray-900/90 border border-gray-700 p-2 rounded text-sm text-white">
+          <input type="text" id="inputProperty" placeholder="Ingatlan új ára..." class="bg-gray-900/90 border border-gray-700 p-2 rounded text-sm text-white">
+        </div>
+        <button onclick="savePrices()" class="bg-amber-500 text-black px-5 py-2 rounded text-xs font-bold hover:bg-amber-400 transition">Árak Mentése</button>
+      </div>
+    </section>
+
+    <!-- 1. KÜLÖNÁLLÓ REFERENCIA MAPPA SZOBA -->
+    <section id="referenciak" class="space-y-6">
+      <div class="flex justify-between items-end">
+        <div>
+          <h2 class="font-luxury text-3xl font-bold gold-gradient-text">REFERENCIA MAPPÁK SZOBA</h2>
+          <p class="text-gray-400 text-sm mt-1">Kattints a mappákra a képek megtekintéséhez!</p>
+        </div>
+        <div id="adminUploadArea" class="hidden">
+          <label class="bg-amber-500 text-black px-4 py-2 rounded-lg font-bold text-sm cursor-pointer hover:bg-amber-400 transition inline-flex items-center gap-2 shadow-lg">
+            <i class="fa-solid fa-plus"></i> Kép Feltöltése
+            <input type="file" id="imageInput" accept="image/*" class="hidden" onchange="uploadImage(event)">
+          </label>
+        </div>
+      </div>
+
+      <!-- Különálló Mappa Dobozok Grid -->
+      <div class="grid md:grid-cols-2 gap-8">
+
+        <!-- MAPPA 1: JÁRMŰ FÉNYEZÉSEK -->
+        <div onclick="openFolder('jarmuvek')" class="glass-card p-6 rounded-2xl cursor-pointer hover:scale-[1.02] transition duration-300 shadow-xl group border border-amber-500/30">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="font-luxury text-xl font-bold text-amber-400 group-hover:text-amber-300 flex items-center gap-2">
+              <i class="fa-solid fa-folder-open text-amber-500"></i> Jármű Fényezések Mappa
+            </h3>
+            <span class="text-xs bg-amber-500/20 text-amber-300 px-3 py-1 rounded-full border border-amber-500/30">Megnyitás ➔</span>
+          </div>
+          <!-- 4 Kis kép háttérként/borítóként -->
+          <div class="grid grid-cols-2 gap-2 rounded-xl overflow-hidden bg-black/40 p-2">
+            <img src="ház1.jpg" alt="Minta 1" class="w-full h-24 object-cover rounded">
+            <img src="ház2.jpg" alt="Minta 2" class="w-full h-24 object-cover rounded">
+            <img src="ház3.jpg" alt="Minta 3" class="w-full h-24 object-cover rounded">
+            <img src="ház4.jpg" alt="Minta 4" class="w-full h-24 object-cover rounded">
+          </div>
+        </div>
+
+        <!-- MAPPA 2: GARÁZS & INGATLAN MUNKÁK -->
+        <div onclick="openFolder('garazs')" class="glass-card p-6 rounded-2xl cursor-pointer hover:scale-[1.02] transition duration-300 shadow-xl group border border-amber-500/30">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="font-luxury text-xl font-bold text-amber-400 group-hover:text-amber-300 flex items-center gap-2">
+              <i class="fa-solid fa-folder-open text-amber-500"></i> Garázsok & Ingatlanok Mappa
+            </h3>
+            <span class="text-xs bg-amber-500/20 text-amber-300 px-3 py-1 rounded-full border border-amber-500/30">Megnyitás ➔</span>
+          </div>
+          <!-- 4 Kis kép háttérként/borítóként -->
+          <div class="grid grid-cols-2 gap-2 rounded-xl overflow-hidden bg-black/40 p-2">
+            <img src="ház5.jpg" alt="Minta 5" class="w-full h-24 object-cover rounded">
+            <img src="ház6.jpg" alt="Minta 6" class="w-full h-24 object-cover rounded">
+            <img src="ház7.jpg" alt="Minta 7" class="w-full h-24 object-cover rounded">
+            <img src="ház8.jpg" alt="Minta 8" class="w-full h-24 object-cover rounded">
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 2. KÜLÖNÁLLÓ NYEREMÉNYJÁTÉK SZOBA -->
+    <section id="nyeremenyjatek">
+      <div class="glass-card p-8 md:p-10 rounded-2xl border-2 border-amber-500/40 shadow-2xl relative overflow-hidden space-y-6">
+        <div class="absolute -right-10 -top-10 w-48 h-48 bg-amber-500/10 rounded-full blur-3xl"></div>
+        
+        <div class="flex items-center gap-4">
+          <div class="w-14 h-14 rounded-2xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-2xl text-amber-400 shadow-inner">
+            🎁
+          </div>
+          <div>
+            <h2 class="font-luxury text-3xl font-bold gold-gradient-text">NYEREMÉNYJÁTÉK SZOBA</h2>
+            <p class="text-gray-400 text-sm">Exkluzív ajándékok, sorsolások és események</p>
+          </div>
+        </div>
+
+        <p class="text-gray-300 text-base leading-relaxed">
+          Köszöntünk a DLN98 Nyereményjáték Szobájában! Itt fogják közzétenni a jövőbeli sorsolások szabályait, nyereményeit és a jelentkezési feltételeket. Ne maradj le róluk!
+        </p>
+
+        <!-- Szerkeszthető / kitölthető belső doboz -->
+        <div class="bg-black/60 p-6 rounded-xl border border-dashed border-amber-500/40 space-y-3">
+          <h3 class="text-amber-400 font-bold text-lg flex items-center gap-2">
+            <span>📌</span> Aktuális Giveaway Állapot: <span class="text-white font-normal">Hamarosan indul!</span>
+          </h3>
+          <p class="text-sm text-gray-400">
+            Az első hivatalos nyereményjáték részletei hamarosan felkerülnek ide. Csatlakozz a Discord szerverhez, hogy első kézből értesülj a startról!
+          </p>
+        </div>
+
+        <div class="flex justify-end pt-2">
+          <a href="https://discord.gg/U43uvDDe3" target="_blank" class="inline-flex items-center gap-3 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black font-bold px-8 py-3 rounded-xl shadow-lg transition transform hover:-translate-y-0.5">
+            <i class="fa-brands fa-discord text-xl"></i> Csatlakozás a Discord Szerverhez
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ELÉRHERŐSÉG SZEKCIÓ -->
+    <section id="elerhetoseg" class="space-y-6">
+      <div class="text-center">
+        <h2 class="font-luxury text-3xl font-bold gold-gradient-text">ELÉRHETŐSÉG</h2>
+        <p class="text-gray-400 text-sm mt-1">Kivitelező: Dillon Whitmore</p>
+      </div>
+
+      <div class="glass-card p-8 rounded-2xl max-w-2xl mx-auto space-y-6 text-center border border-amber-500/30">
+        <!-- Telefonszám -->
+        <div class="flex items-center justify-center space-x-3 text-lg text-gray-200">
+          <i class="fa-solid fa-phone text-amber-400"></i>
+          <span>Telefonszám: <strong id="phoneDisplay">129495567</strong></span>
+        </div>
+
+        <!-- Discord Gomb -->
+        <div>
+          <a href="https://discord.gg/U43uvDDe3" target="_blank" id="discordDisplay" class="inline-flex items-center space-x-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-3 rounded-xl transition shadow-lg">
+            <i class="fa-brands fa-discord text-xl"></i>
+            <span>Csatlakozás a Discord Szerverhez</span>
+          </a>
+        </div>
+
+        <!-- ADMIN ELÉRHETŐSÉG SZERKESZTŐ PANEL -->
+        <div id="adminEditContact" class="hidden pt-4 border-t border-gray-800 space-y-3">
+          <p class="text-xs font-bold text-amber-400 uppercase">⚡ Admin: Elérhetőségek Módosítása</p>
+          <input type="text" id="phoneInput" placeholder="Új telefonszám..." class="w-full bg-gray-900/90 border border-gray-700 p-2 rounded text-sm text-white">
+          <input type="text" id="discordInput" placeholder="Új Discord link..." class="w-full bg-gray-900/90 border border-gray-700 p-2 rounded text-sm text-white">
+          <button onclick="saveContactInfo()" class="bg-amber-500 text-black px-4 py-2 rounded text-xs font-bold hover:bg-amber-400 transition">Elérhetőség Mentése</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- MEGRENDELÉS -->
+    <section id="megrendeles" class="text-center py-8">
+      <div class="glass-card p-10 rounded-2xl gold-border-glow max-w-3xl mx-auto space-y-6">
+        <h2 class="font-luxury text-3xl font-bold gold-gradient-text">MEGRENDELÉS</h2>
+        <p class="text-gray-300">
+          Kattints az alábbi gombra a megrendeléshez! A gomb azonnal átirányít a Discord szerverünkre, ahol nyithatsz egy ticket-et.
+        </p>
+        <a id="orderBtn" href="https://discord.gg/U43uvDDe3" target="_blank" class="inline-flex items-center gap-3 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-lg px-8 py-4 rounded-xl shadow-xl transition transform hover:-translate-y-0.5">
+          <i class="fa-brands fa-discord text-2xl"></i> Megrendelés a Discordon
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODAL (MAPPA KÉPGALÉRIA FELUGRÓ ABLAK) -->
+  <div id="galleryModal" class="fixed inset-0 bg-black/90 backdrop-blur-md hidden items-center justify-center p-4 z-50">
+    <div class="max-w-4xl w-full bg-neutral-900 border border-amber-500/40 rounded-2xl p-6 relative max-h-[90vh] overflow-y-auto">
+      
+      <!-- Bezárás gomb -->
+      <button onclick="closeFolder()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl font-bold">
+        ✖
+      </button>
+
+      <h3 id="modalTitle" class="font-luxury text-2xl font-bold text-amber-400 mb-6">Mappa tartalma</h3>
+
+      <!-- Az összes kép ebben a rácsban jelenik meg -->
+      <div id="modalImages" class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <!-- JavaScriptből töltődik be -->
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-gray-800/80 py-6 text-center text-xs text-gray-500 bg-black/60 backdrop-blur-md">
+    <p>© 2026 DLN98 Ingatlan & Garázs — Hungary Life v3. Tervezte: Dillon Whitmore.</p>
+  </footer>
+
+  <!-- ADMIN LOGIN MODAL -->
+  <div id="adminModal" class="fixed inset-0 bg-black/80 backdrop-blur-md hidden flex items-center justify-center z-50 p-4">
+    <div class="glass-card p-8 rounded-2xl max-w-md w-full space-y-4 border border-amber-500/30">
+      <h3 class="font-luxury text-xl font-bold text-amber-400">Admin Bejelentkezés</h3>
+      <p class="text-xs text-gray-400">Add meg az adminisztrátori jelszót a szerkesztési felület feloldásához.</p>
+      <input type="password" id="adminPassword" placeholder="Jelszó..." class="w-full bg-gray-900 border border-gray-700 p-3 rounded-lg text-white">
+      <p id="loginError" class="text-red-500 text-xs hidden">Hibás jelszó!</p>
+      <div class="flex justify-end gap-3">
+        <button onclick="toggleAdminModal()" class="px-4 py-2 text-gray-400 hover:text-white text-sm">Mégse</button>
+        <button onclick="loginAdmin()" class="bg-amber-500 text-black font-bold px-6 py-2 rounded-lg text-sm hover:bg-amber-400 transition">Belépés</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Dinamikus galéria adatok
+    const galleryData = {
+      jarmuvek: [
+        "ház1.jpg", "ház2.jpg", "ház3.jpg", "ház4.jpg"
+      ],
+      garazs: [
+        "ház5.jpg", "ház6.jpg", "ház7.jpg", "ház8.jpg", "ház9.jpg", "ház10.jpg", "gáz11.jpg"
+      ]
+    };
+
+    function openFolder(folderKey) {
+      const modal = document.getElementById('galleryModal');
+      const title = document.getElementById('modalTitle');
+      const container = document.getElementById('modalImages');
+
+      title.innerText = folderKey === 'jarmuvek' ? '📁 Jármű Fényezések Mappa' : '📁 Garázsok & Ingatlanok Mappa';
+
+      container.innerHTML = '';
+      galleryData[folderKey].forEach(imgUrl => {
+        const card = document.createElement('div');
+        card.className = 'glass-card rounded-xl overflow-hidden shadow-lg border border-gray-800';
+        card.innerHTML = `<img src="${imgUrl}" class="w-full h-48 object-cover hover:scale-105 transition duration-200">`;
+        container.appendChild(card);
+      });
+
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeFolder() {
+      const modal = document.getElementById('galleryModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function toggleAdminModal() {
+      document.getElementById('adminModal').classList.toggle('hidden');
+    }
+
+    function loginAdmin() {
+      const pass = document.getElementById('adminPassword').value;
+      if (pass === 'dillon1998') {
+        document.getElementById('adminBtnText').innerText = 'Admin Mód (Aktiválva)';
+        document.getElementById('adminUploadArea').classList.remove('hidden');
+        document.getElementById('adminEditContact').classList.remove('hidden');
+        document.getElementById('adminEditPrices').classList.remove('hidden');
+        toggleAdminModal();
+      } else {
+        document.getElementById('loginError').classList.remove('hidden');
+      }
+    }
+
+    function savePrices() {
+      const s = document.getElementById('inputSmall').value;
+      const m = document.getElementById('inputMedium').value;
+      const l = document.getElementById('inputLarge').value;
+      const prop = document.getElementById('inputProperty').value;
+
+      if(s) document.getElementById('price-small-garage').innerText = s;
+      if(m) document.getElementById('price-medium-garage').innerText = m;
+      if(l) document.getElementById('price-large-garage').innerText = l;
+      if(prop) document.getElementById('price-property').innerText = prop;
+
+      alert('Árak sikeresen frissítve!');
+    }
+
+    function uploadImage(e) {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(event) {
+          galleryData.garazs.push(event.target.result);
+          alert('Kép sikeresen hozzáadva a galériához!');
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+
+    function saveContactInfo() {
+      const p = document.getElementById('phoneInput').value;
+      const d = document.getElementById('discordInput').value;
+      if(p) document.getElementById('phoneDisplay').innerText = p;
+      if(d) {
+        document.getElementById('discordDisplay').href = d;
+        document.getElementById('orderBtn').href = d;
+        document.getElementById('heroOrderBtn').href = d;
+      }
+      alert('Elérhetőségek és Discord átirányítás frissítve!');
+    }
+  </script>
+</body>
+</html>
