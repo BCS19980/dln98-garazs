@@ -302,8 +302,7 @@
       allGalleryImages.forEach(imgUrl => {
         const card = document.createElement('div');
         card.className = 'glass-card rounded-xl overflow-hidden shadow-lg border border-gray-800 cursor-pointer';
-        // Kattintásra megnyitja a nagyítót
-        card.innerHTML = `<img src="${imgUrl}" class="w-full h-48 object-cover hover:scale-105 transition duration-200" onclick="openLightbox('${imgUrl}')">`;
+        card.innerHTML = `<img src="${imgUrl}" class="w-full h-48 object-cover hover:scale-105 transition duration-200" onclick="openLightbox('${imgUrl}')" onerror="this.src='https://picsum.photos/600/400?blur=2'">`;
         container.appendChild(card);
       });
 
@@ -317,7 +316,6 @@
       modal.classList.remove('flex');
     }
 
-    // Kép nagyító (Lightbox) megnyitása
     function openLightbox(imgUrl) {
       const lightbox = document.getElementById('imageLightbox');
       const lightboxImg = document.getElementById('lightboxImg');
@@ -326,7 +324,6 @@
       lightbox.classList.add('flex');
     }
 
-    // Kép nagyító bezárása az X-el
     function closeLightbox() {
       const lightbox = document.getElementById('imageLightbox');
       lightbox.classList.add('hidden');
@@ -346,7 +343,7 @@
         document.getElementById('adminEditPrices').classList.remove('hidden');
         toggleAdminModal();
       } else {
-        document.getElementById('loginError'].classList.remove('hidden');
+        document.getElementById('loginError').classList.remove('hidden');
       }
     }
 
@@ -382,7 +379,7 @@
       if(p) document.getElementById('phoneDisplay').innerText = p;
       if(d) {
         document.getElementById('discordDisplay').href = d;
-        document.getElementById('orderBtn').href, d;
+        document.getElementById('orderBtn').href = d;
         document.getElementById('heroOrderBtn').href = d;
       }
       alert('Elérhetőségek és Discord átirányítás frissítve!');
